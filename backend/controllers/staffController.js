@@ -74,9 +74,20 @@ const deleteStaff = async (req, res) => {
   }
 };
 
+const getAllStaff = async (req, res) => {
+  try {
+    const staff = await Staff.find();
+    res.status(200).json(staff);
+  } catch (error) {
+    console.error('Error getting staff:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 module.exports = {
   createStaff,
   getStaff,
   updateStaff,
-  deleteStaff
+  deleteStaff, 
+  getAllStaff
 };

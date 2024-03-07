@@ -74,9 +74,20 @@ const updateStudent = async (req, res) => {
   }
 };
 
+const getAllStudents = async (req, res) => {
+  try {
+    const students = await Student.find();
+    res.status(200).json(students);
+  } catch (error) {
+    console.error('Error getting students:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 module.exports = {
   createStudent,
   getStudent,
   deleteStudent,
-  updateStudent
+  updateStudent,
+  getAllStudents
 };
