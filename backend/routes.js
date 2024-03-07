@@ -4,6 +4,7 @@ const { createStudent, getStudent, deleteStudent, updateStudent, getAllStudents 
 const { createStaff, getStaff, updateStaff, deleteStaff, getAllStaff } = require('./controllers/staffController');
 const { getAllPrograms, getProgramById, createProgram, deleteProgram } = require('./controllers/programController');
 const { getAllCourses, getCourseById, createCourse, deleteCourse } = require('./controllers/courseController');
+const { getAllCampuses, getCampusById, createCampus, deleteCampus } = require('./controllers/campusController');
 
 // Student Routes
 router.post('/student', createStudent);
@@ -25,10 +26,16 @@ router.get('/program/:program_id', getProgramById);
 router.delete('/program/:program_id', deleteProgram);
 router.get('/programs', getAllPrograms);
 
-// Route to get all courses
+// Course routes
 router.get('/courses', getAllCourses);
 router.get('/course/:course_id', getCourseById);
 router.post('/course', createCourse);
 router.delete('/course/:course_id', deleteCourse);
+
+// Campus routes
+router.get('/campuses', getAllCampuses);
+router.get('/campus/:campus_id', getCampusById);
+router.post('/campus', createCampus);
+router.delete('/campus/:campus_id', deleteCampus);
 
 module.exports = router; 

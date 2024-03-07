@@ -15,7 +15,8 @@ const campusSchema = new mongoose.Schema({
   },
   manager: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Staff'
+    ref: 'Staff',
+    required: false
   }
 });
 
