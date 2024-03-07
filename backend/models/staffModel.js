@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const staffSchema = new mongoose.Schema({
+  staff_id: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true
@@ -16,11 +21,13 @@ const staffSchema = new mongoose.Schema({
   },
   campus_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Campus'
+    ref: 'Campus',
+    required: false
   },
   department_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Department'
+    ref: 'Department',
+    required: false
   }
 });
 
