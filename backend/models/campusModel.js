@@ -18,8 +18,8 @@ const campusSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  manager: {
-    type: mongoose.Schema.Types.ObjectId,
+  manager_id: {
+    type: mongoose.Schema.Types.String,
     ref: 'Staff',
     required: false
   }

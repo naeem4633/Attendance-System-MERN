@@ -20,12 +20,12 @@ const staffSchema = new mongoose.Schema({
     required: true
   },
   campus_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Campus',
     required: false
   },
   department_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Department',
     required: false
   }

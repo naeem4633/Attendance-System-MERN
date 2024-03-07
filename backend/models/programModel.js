@@ -15,7 +15,7 @@ const programSchema = new mongoose.Schema({
     required: true
   },
   department_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Department',
     required: false  
   }

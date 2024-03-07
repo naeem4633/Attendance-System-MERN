@@ -5,6 +5,7 @@ const { createStaff, getStaff, updateStaff, deleteStaff, getAllStaff } = require
 const { getAllPrograms, getProgramById, createProgram, deleteProgram } = require('./controllers/programController');
 const { getAllCourses, getCourseById, createCourse, deleteCourse } = require('./controllers/courseController');
 const { getAllCampuses, getCampusById, createCampus, deleteCampus } = require('./controllers/campusController');
+const { createStudentCourse, deleteStudentCourse, getAllStudentCourses } = require('./controllers/studentCourseController');
 
 // Student Routes
 router.post('/student', createStudent);
@@ -37,5 +38,11 @@ router.get('/campuses', getAllCampuses);
 router.get('/campus/:campus_id', getCampusById);
 router.post('/campus', createCampus);
 router.delete('/campus/:campus_id', deleteCampus);
+
+// Student-Course relationship routes
+router.post('/student-course', createStudentCourse);
+router.delete('/student-course/:student_id/:course_id', deleteStudentCourse);
+router.get('/student-courses', getAllStudentCourses);
+
 
 module.exports = router; 

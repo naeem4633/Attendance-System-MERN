@@ -15,7 +15,7 @@ const courseSchema = new mongoose.Schema({
     required: true
   },
   program_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Program'
   }
 });
