@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
+  student_id: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true
@@ -16,18 +21,22 @@ const studentSchema = new mongoose.Schema({
   },
   program_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Program'
+    ref: 'Program',
+    required: false
   },
   department_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Department'
+    ref: 'Department',
+    required: false
   },
   campus_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Campus'
+    ref: 'Campus',
+    required: false
   }
 });
 
 const Student = mongoose.model('Student', studentSchema);
 
 module.exports = Student;
+
