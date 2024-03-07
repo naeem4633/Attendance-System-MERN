@@ -11,12 +11,12 @@ const getAllPrograms = async (req, res) => {
   }
 };
 
-// Get one program by id
+// Get one program by program_id
 const getProgramById = async (req, res) => {
-  const programId = req.params.id;
+  const program_id = req.params.program_id;
 
   try {
-    const program = await Program.findById(programId);
+    const program = await Program.findOne({ program_id: program_id });
     if (!program) {
       return res.status(404).json({ error: 'Program not found' });
     }
@@ -39,12 +39,12 @@ const createProgram = async (req, res) => {
   }
 };
 
-// Delete a program by id
+// Delete a program by program_id
 const deleteProgram = async (req, res) => {
-  const programId = req.params.id;
+  const program_id = req.params.program_id;
 
   try {
-    const deletedProgram = await Program.findByIdAndDelete(programId);
+    const deletedProgram = await Program.findOneAndDelete({ program_id: program_id });
     if (!deletedProgram) {
       return res.status(404).json({ error: 'Program not found' });
     }

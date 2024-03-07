@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const programSchema = new mongoose.Schema({
+  program_id: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true
