@@ -1,8 +1,7 @@
 const Student = require('../models/studentModel');
 
-// Controller to create a new student
 const createStudent = async (req, res) => {
-  const { student_id, name, email, contact_number, program_id, department_id, campus_id } = req.body;
+  const { student_id, name, email, contact_number, program_id, department_id, campus_id, rfid, facial_signature, biometric_profile } = req.body;
 
   try {
     // Check if the student already exists
@@ -12,7 +11,7 @@ const createStudent = async (req, res) => {
     }
 
     // Create a new student
-    const newStudent = new Student({ student_id, name, email, contact_number, program_id, department_id, campus_id });
+    const newStudent = new Student({ student_id, name, email, contact_number, program_id, department_id, campus_id, rfid, facial_signature, biometric_profile });
     await newStudent.save();
 
     res.status(201).json(newStudent);
@@ -21,7 +20,6 @@ const createStudent = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
-
 
 const getStudent = async (req, res) => {
   const studentId = req.params.student_id; 

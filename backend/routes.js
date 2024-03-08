@@ -6,6 +6,7 @@ const { getAllPrograms, getProgramById, createProgram, deleteProgram } = require
 const { getAllCourses, getCourseById, createCourse, deleteCourse } = require('./controllers/courseController');
 const { getAllCampuses, getCampusById, createCampus, deleteCampus } = require('./controllers/campusController');
 const { createStudentCourse, deleteStudentCourse, getAllStudentCourses } = require('./controllers/studentCourseController');
+const { getAllDevices, getDeviceById, createDevice, updateDevice, deleteDevice } = require('./controllers/deviceController');
 
 // Student Routes
 router.post('/student', createStudent);
@@ -43,6 +44,13 @@ router.delete('/campus/:campus_id', deleteCampus);
 router.post('/student-course', createStudentCourse);
 router.delete('/student-course/:student_id/:course_id', deleteStudentCourse);
 router.get('/student-courses', getAllStudentCourses);
+
+// Device routes
+router.get('/devices', getAllDevices);
+router.get('/device/:device_id', getDeviceById);
+router.post('/device', createDevice);
+router.put('/device/:device_id', updateDevice);
+router.delete('/device/:device_id', deleteDevice);
 
 
 module.exports = router; 

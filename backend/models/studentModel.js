@@ -33,6 +33,18 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.String,
     ref: 'Campus',
     required: false
+  },
+  rfid: {
+    type: String,
+    required: false
+  },
+  facial_signature: {
+    type: String,
+    required: false
+  },
+  biometric_profile: {
+    type: String,
+    required: false
   }
 });
 
