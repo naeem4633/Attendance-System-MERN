@@ -4,7 +4,7 @@ const StudentCourse = require('../models/studentCourseModel');
 const createStudentCourse = async (req, res) => {
   try {
     const newStudentCourse = new StudentCourse(req.body);
-    await newStudentCourse.save();
+    await newStudentCourse.save(); 
     res.status(201).json(newStudentCourse);
   } catch (error) {
     console.error('Error creating student-course relationship:', error);
