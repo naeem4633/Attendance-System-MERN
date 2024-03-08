@@ -5,9 +5,9 @@ const { createStaff, getStaff, updateStaff, deleteStaff, getAllStaff } = require
 const { getAllPrograms, getProgramById, createProgram, deleteProgram } = require('./controllers/programController');
 const { getAllCourses, getCourseById, createCourse, deleteCourse } = require('./controllers/courseController');
 const { getAllCampuses, getCampusById, createCampus, deleteCampus } = require('./controllers/campusController');
-const { createStudentCourse, deleteStudentCourse, getAllStudentCourses } = require('./controllers/studentCourseController');
+const { createStudentCourse, deleteStudentCourse, getAllStudentCourses, getStudentsByCourseId, getCoursesByStudentId } = require('./controllers/studentCourseController');
 const { getAllDevices, getDeviceById, createDevice, updateDevice, deleteDevice } = require('./controllers/deviceController');
-const {createStudentDevice, deleteStudentDevice, getAllStudentDevices, getDevicesByStudentId, getStudentsByDeviceId} = require('./controllers/studentDeviceController');
+const {createStudentDevice, deleteStudentDevice, getAllStudentDevices, getStudentsByDeviceId, getDevicesByStudentId} = require('./controllers/studentDeviceController');
   
 
 // Student Routes
@@ -46,6 +46,8 @@ router.delete('/campus/:campus_id', deleteCampus);
 router.post('/student-course', createStudentCourse);
 router.delete('/student-course/:student_id/:course_id', deleteStudentCourse);
 router.get('/student-courses', getAllStudentCourses);
+router.get('/student-courses/course-ids/:student_id', getCoursesByStudentId);
+router.get('/student-courses/student-ids/:course_id', getStudentsByCourseId);
 
 // Device routes
 router.get('/devices', getAllDevices);
@@ -53,13 +55,13 @@ router.get('/device/:device_id', getDeviceById);
 router.post('/device', createDevice);
 router.put('/device/:device_id', updateDevice);
 router.delete('/device/:device_id', deleteDevice);
-router.get('/student-device/devices/:student_id', getDevicesByStudentId);
-router.get('/student-device/students/:device_id', getStudentsByDeviceId);
 
 // Route to create a new student-device relationship
 router.post('/student-device', createStudentDevice);
 router.delete('/student-device/:student_id/:device_id', deleteStudentDevice);
 router.get('/student-devices', getAllStudentDevices);
+router.get('/student-devices/student-ids/:device_id', getStudentsByDeviceId);
+router.get('/student-devices/device-ids/:student_id', getDevicesByStudentId);
 
 
 module.exports = router; 
