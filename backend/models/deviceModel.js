@@ -18,6 +18,10 @@ const deviceSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  contains_keypad: {
+    type: Boolean,
+    default: false
+  },
   contains_biometric: {
     type: Boolean,
     default: false

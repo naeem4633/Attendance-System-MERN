@@ -44,6 +44,10 @@ const staffSchema = new mongoose.Schema({
   biometric_profile: {
     type: String,
     required: false
+  },
+  keypad_unique_key: {
+    type: String,
+    required: false
   }
 });
 
