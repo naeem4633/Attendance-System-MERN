@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <div className='w-full h-[8vh] flex justify-between border border-black content-center items-center px-20'>
-        <div className='border border-black'>
+        <Link to={'/'} className='border border-black'>
             <p>Logo</p>
-        </div>
+        </Link>
         <div className='border border-black'>
             <ul className='flex space-x-4'>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
+                <li>Device Management</li>
+                <li>Live Attendance</li>
+                <li>Device Simulator</li>
             </ul>
         </div>
     </div>

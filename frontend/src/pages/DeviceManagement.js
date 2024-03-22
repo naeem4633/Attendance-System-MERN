@@ -1,6 +1,7 @@
 import React from 'react'
-
-const DeviceManagement = () => {
+import { Link } from 'react-router-dom';
+ 
+const DeviceManagement = ({deviceList}) => {
   return (
     <section className='w-full justify-center items-center py-10'>
         <div className='h-[85vh] mx-auto w-3/4 border border-black space-y-10'>
@@ -23,34 +24,27 @@ const DeviceManagement = () => {
                     </div>
                 </div>
 
-                <div className='w-full grid grid-cols-4'>
+                {deviceList.map((device, index) => (
+                <Link to={`/device-details/${device.device_id}`} key={index} className='w-full grid grid-cols-4'>
                     <div className='w-full border border-black'>
-                        <p className='text-base'>43567</p>
+                    <p className='text-base'>{device.device_id}</p>
                     </div>
                     <div className='w-full border border-black'>
-                        <p className='text-base'>dev6576890-0</p>
+                    <p className='text-base'>{device.name}</p>
                     </div>
                     <div className='w-full border border-black'>
-                        <p className='text-base'>tuyioljhvgctfyguh</p>
+                    <p className='text-base'>{device.unique_identifier}</p>
                     </div>
                     <div className='w-full border border-black'>
-                        <p className='text-base'>rfid, bio, face</p>
+                    <p className='text-base'>
+                        {device.contains_rfid ? 'rfid, ' : ''}
+                        {device.contains_facial_recognition ? 'face, ' : ''}
+                        {device.contains_keypad ? 'keypad, ' : ''}
+                        {device.contains_biometric ? 'bio, ' : ''}
+                    </p>
                     </div>
-                </div>
-                <div className='w-full grid grid-cols-4'>
-                    <div className='w-full border border-black'>
-                        <p className='text-base'>43567</p>
-                    </div>
-                    <div className='w-full border border-black'>
-                        <p className='text-base'>dev6576890-0</p>
-                    </div>
-                    <div className='w-full border border-black'>
-                        <p className='text-base'>tuyioljhvgctfyguh</p>
-                    </div>
-                    <div className='w-full border border-black'>
-                        <p className='text-base'>rfid, bio, face</p>
-                    </div>
-                </div>
+                </Link>
+                ))}
 
             </div>
         </div>
