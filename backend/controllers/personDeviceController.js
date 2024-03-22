@@ -35,6 +35,25 @@ const createPersonDevice = async (req, res) => {
     }
   };
 
+  
+  const getPersonDeviceById = async (req, res) => {
+    const { person_id, device_id } = req.params;
+    try {
+      // Find all person-device relationships with matching person_id and device_id
+      const personDevices = await PersonDevice.find({ person_id, device_id });
+      
+      if (!personDevices || personDevices.length === 0) {
+        return res.status(404).json({ error: 'Person-device relationships not found' });
+      }
+  
+      res.status(200).json(personDevices);
+    } catch (error) {
+      console.error('Error getting person-device relationships by ID:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+
+
 // Delete a person-device relationship
 const deletePersonDevice = async (req, res) => {
     const { person_id, device_id } = req.params;
@@ -125,5 +144,6 @@ module.exports = {
   getAllPersonDevices,
   updatePersonDevice,
   getPersonsByDeviceId,
-  getDevicesByPersonId
+  getDevicesByPersonId,
+  getPersonDeviceById
 };

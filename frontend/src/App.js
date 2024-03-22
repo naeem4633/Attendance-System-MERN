@@ -6,6 +6,7 @@ import DeviceManagement from './pages/DeviceManagement';
 import LiveAttendance from './pages/LiveAttendance';
 import DeviceSimulator from './pages/DeviceSimulator';
 import DeviceDetails from './pages/DeviceDetails';
+import PersonActionsPage from './pages/PersonActionsPage';
 import React, { useState, useEffect } from 'react';
 
 export default function App() {
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/live-attendance" element={<LiveAttendance />} />
             <Route path="/device-simulator" element={<DeviceSimulator />} />
             <Route path="/device-details/:device_id" element={<DeviceDetails />} />
+            <Route path="/person-actions-page/:person_id/:device_id" element={<PersonActionsPage />} />
           </Routes>
         </div>
       </div>

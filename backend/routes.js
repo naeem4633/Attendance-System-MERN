@@ -7,7 +7,7 @@ const { getAllCourses, getCourseById, createCourse, deleteCourse } = require('./
 const { getAllCampuses, getCampusById, createCampus, deleteCampus } = require('./controllers/campusController');
 const { createStudentCourse, deleteStudentCourse, getAllStudentCourses, getStudentsByCourseId, getCoursesByStudentId } = require('./controllers/studentCourseController');
 const { getAllDevices, getDeviceById, createDevice, updateDevice, deleteDevice } = require('./controllers/deviceController');
-const { createPersonDevice, deletePersonDevice, getAllPersonDevices, getPersonsByDeviceId, getDevicesByPersonId } = require('./controllers/personDeviceController');
+const { createPersonDevice, deletePersonDevice, getAllPersonDevices, getPersonsByDeviceId, getDevicesByPersonId, getPersonDeviceById } = require('./controllers/personDeviceController');
 const { createManualOverride, endManualOverride, getManualOverridesByDeviceId } = require('./controllers/manualOverrideController');
 
 // Student Routes
@@ -62,6 +62,7 @@ router.delete('/person-device/:person_id/:device_id', deletePersonDevice);
 router.get('/person-devices', getAllPersonDevices);
 router.get('/person-device/persons/:device_id', getPersonsByDeviceId);
 router.get('/person-device/devices/:person_id', getDevicesByPersonId);
+router.get('/person-device/:person_id/:device_id', getPersonDeviceById);
 
 //Manual Override routes
 router.post('/manual-override/:device_id', createManualOverride);

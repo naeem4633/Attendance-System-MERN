@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const DeviceDetails = () => {
   const { device_id } = useParams();
@@ -30,65 +30,92 @@ const DeviceDetails = () => {
           <p className='text-4xl font-semibold'>Device Details</p>
         </div>
         <div className='w-full border border-black h-[70vh] space-y-4'>
-          <div className='flex justify-start items-center w-full border border-black'>
-            <p className='text-xl font-semibold'>Registered persons</p>
-          </div>
-          <div className='w-full grid grid-cols-5'>
-            <div className='w-full border border-black'>
-              <p className='text-xl font-semibold'>id</p>
+            <div className='flex justify-start items-center w-full border border-black'>
+                <p className='text-xl font-semibold'>Registered persons</p>
             </div>
-            <div className='w-full border border-black'>
-              <p className='text-xl font-semibold'>name</p>
+            <div className=''>
+                <div className='flex justify-center items-center w-full border border-black'>
+                    <p className='text-xl font-semibold'>Students</p>
+                </div>
+                <div className='w-full grid grid-cols-5'>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>id</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>name</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>department</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>registration type</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>options</p>
+                    </div>
+                </div>
+                {personDeviceData && personDeviceData.students.map(student => (
+                <div key={student._id} className='w-full grid grid-cols-5'>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{student.student_id}</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{student.name}</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{student.department}</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>rfid</p>
+                    </div>
+                    <Link to={`/person-actions-page/${student.student_id}/${device_id}`} className='w-full border border-black'>
+                        <p className='text-base'>actions</p> 
+                    </Link>
+                </div>
+                ))}
             </div>
-            <div className='w-full border border-black'>
-              <p className='text-xl font-semibold'>department</p>
-            </div>
-            <div className='w-full border border-black'>
-              <p className='text-xl font-semibold'>registration type</p>
-            </div>
-            <div className='w-full border border-black'>
-              <p className='text-xl font-semibold'>options</p>
-            </div>
-          </div>
 
-          {personDeviceData && personDeviceData.students.map(student => (
-            <div key={student._id} className='w-full grid grid-cols-5'>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{student.student_id}</p>
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{student.name}</p>
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{student.department}</p> {/* Assuming department exists */}
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>rfid</p> {/* Assuming registration type is always rfid */}
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>rfid, bio, face</p> {/* Assuming options */}
-              </div>
+            <div className=''>
+                <div className='flex justify-center items-center w-full border border-black'>
+                    <p className='text-xl font-semibold'>Staff Members</p>
+                </div>
+                <div className='w-full grid grid-cols-5'>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>id</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>name</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>department</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>registration type</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                    <p className='text-xl font-semibold'>options</p>
+                    </div>
+                </div>
+                {personDeviceData && personDeviceData.staffs.map(staff => (
+                <div key={staff._id} className='w-full grid grid-cols-5'>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{staff.staff_id}</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{staff.name}</p>
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>{staff.department}</p> 
+                    </div>
+                    <div className='w-full border border-black'>
+                        <p className='text-base'>rfid</p>
+                    </div>
+                    <Link to={`/person-actions-page/${staff.staff_id}/${device_id}`} className='w-full border border-black'>
+                        <p className='text-base'>actions</p>
+                    </Link>
+                </div>
+                ))}
             </div>
-          ))}
-          {personDeviceData && personDeviceData.staffs.map(staff => (
-            <div key={staff._id} className='w-full grid grid-cols-5'>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{staff.staff_id}</p>
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{staff.name}</p>
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>{staff.department}</p> {/* Assuming department exists */}
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>rfid</p> {/* Assuming registration type is always rfid */}
-              </div>
-              <div className='w-full border border-black'>
-                <p className='text-base'>rfid, bio, face</p> {/* Assuming options */}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
